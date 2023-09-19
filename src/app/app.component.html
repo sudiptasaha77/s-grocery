@@ -1,0 +1,46 @@
+
+
+<div class="toolbar" role="banner" routerLink="home">
+  <img
+    width="80"
+    height="90"
+    alt="Shopping Grocery"
+    src="../assets/shoppingLogo.png"
+  />
+  <span class="logoStyle">Sandy's Cart</span>
+</div>
+<div>
+  <app-cart routerLink="checkout"></app-cart>
+</div>
+<div>
+  <ul>
+    <li routerLinkActive="active"><a routerLink="home">Home</a></li>
+    <li  routerLinkActive="active"><a routerLink="eachTileDetails">Details</a></li>
+  </ul>
+</div>
+
+<!-- <div>
+  <nav class="navbar navbar-dark bg-dark">
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item"><a class="nav-link" routerLink="home">Home</a></li>
+      <li class="nav-item"><a class="nav-link" routerLink="eachTileDetails">Details</a></li>
+    </ul>
+  </nav>
+</div> -->
+<!-- 
+<div>
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" routerLink="home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+      <a class="nav-item nav-link" id="nav-detail-tab" data-toggle="tab" routerLink="eachTileDetails" role="tab" aria-controls="nav-detail" aria-selected="false">Details</a>
+      
+    </div>
+  </nav>
+</div> -->
+
+<div class="content" role="main">
+  <router-outlet></router-outlet>
+</div>
+
+
+

@@ -1,0 +1,49 @@
+<div class="container" >
+    <div class="row">
+      <h1>Checkout</h1>
+    </div>
+    <div class="row checkout-item-style" *ngFor="let item of actualCheckoutList">
+        <div class="col">
+            <button class="btn btn-dark" (click)= "removeItem(item.id)">x</button>
+        </div>
+        <div class="col">
+            <img width="240px" src="{{item.imageUrl}}" alt="{{item.imageUrl}}"/>
+        </div>
+        <div class="col-sm">
+            <h3>{{item.title}}</h3>
+            <p>ID: {{item.id}}</p>
+            <p>Title :{{item.title}}</p>
+            <p>Price: {{item.price | currency: 'USD' : 'symbol' }}</p>
+            <p>Quantity: <input type="number" id="{{item.id}}" name="{{item.id}}" min="1" max="100" (change)="quantityChange(item.id)" [(ngModel)]= "item.quantity"></p>
+        </div>
+        <div class="col-sm">
+          <p>Total: {{ item.price *  item.quantity | currency: 'USD' : 'symbol' }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+           <p>Discount: <input type="text" [(ngModel)]= "discountValue" (change)="appliedDiscount()"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-success" role="alert" *ngIf="successDiscount">
+                This is a success alert—check it out!
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="errorDiscount">
+                This is a danger alert—check it out!
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+           <p>Total: {{totalSum - discountValue | number: '1.0-2' |  currency: 'USD' : 'symbol' }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-dark" (click)= "finalCheckout()">Checkout</button>
+        </div>
+    </div>
+
+</div>
