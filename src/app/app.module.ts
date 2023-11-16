@@ -3,30 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { TileComponent } from './components/tile/tile.component';
-import { TileDetailsComponent } from './components/tile-details/tile-details.component';
-import { ErrorPageComponent } from './components/error-page/error-page.component';
-import { CartComponent } from './components/cart/cart.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
 import { FormsModule } from '@angular/forms';
-
+import { LoginPageComponent } from './login/login-page/login-page.component'
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    TileComponent,
-    TileDetailsComponent,
-    ErrorPageComponent,
-    CartComponent,
-    CheckoutComponent
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

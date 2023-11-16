@@ -1,0 +1,61 @@
+
+<form [formGroup]="form" class="loginForm">
+    <div class="container">
+        <div class="row">
+            <div class="col" style="text-align: center">
+                <h1>Login</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col userIcon">
+                <img width="120" height="140" alt="Shopping Grocery" src="../assets/users.png" />
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <span>
+                    <label class="form-label">User Name: </label>
+                </span>
+            </div>
+            <div class="col">
+                <span>
+                    <input type="text" class="form-control"  formControlName="userId"/>
+                </span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <span>
+                    <label class="form-label">Password: </label>
+                </span>
+            </div>
+            <div class="col">
+                <span>
+                    <input type="text" class="form-control"  formControlName="password"/>
+                </span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <span>
+                    <label class="form-label">Role: </label>
+                </span>
+            </div>
+            <div class="col">
+                <span>
+                    <select class="form-select" aria-label="Default select example" formControlName="role">
+                        <option selected>Please select ...</option>
+                        <option class="option" *ngFor="let roleval of roleList" [value]="roleval">
+                            {{ roleval }}
+                        </option>
+                    </select>
+                </span>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <button (click)="signIn()" class="btn btn-primary mb-3" [disabled]="!form.valid">Sign-in</button>
+            </div>
+        </div>
+    </div>
+</form>

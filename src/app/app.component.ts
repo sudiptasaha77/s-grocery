@@ -10,5 +10,4 @@ export class AppComponent{
   totalNumberOfItem: any;
 
   title = 's-grocery';
-
 }

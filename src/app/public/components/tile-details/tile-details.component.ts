@@ -1,6 +1,6 @@
 
 import { Component, OnInit, Output } from '@angular/core';
-import { ShoppingCartService } from '../../../service/shopping-cart.service';
+import { ShoppingCartService } from '../../../../service/shopping-cart.service';
 import { ShoppingCart } from 'src/model/shopping-cart.model';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';

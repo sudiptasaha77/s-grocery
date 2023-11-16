@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/service/auth.service';
 import { ShoppingCartService } from 'src/service/shopping-cart.service';
 
 
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit {
   actualCheckoutList: any;
   
 
-  constructor(private router: Router, private shoppingCartService: ShoppingCartService){
+  constructor(private router: Router, private shoppingCartService: ShoppingCartService, private authService:AuthService){
 
   }
 
@@ -36,6 +37,9 @@ export class CartComponent implements OnInit {
    window.location.reload();
    this.router.navigate(['/home']);
    
+  }
+  logout(){
+    this.authService.logout();
   }
 
 }

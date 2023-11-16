@@ -1,19 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { TileDetailsComponent } from './components/tile-details/tile-details.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
-import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { LoginDetailsComponent } from './login/login-details/login-details.component';
+import { LoginPageComponent } from './login/login-page/login-page.component';
+import { authGuard } from '../service/auth.guard';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  //{path: 'login', component: LoginPageComponent},
-  //{path: 'login-details', component: LoginDetailsComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'eachTileDetails/:id', component: TileDetailsComponent},
-  {path: 'checkout', component: CheckoutComponent},
-  { path: '**', component: ErrorPageComponent },
-
+  {path: '', component: LoginPageComponent},
+  {path: 'login', component: LoginPageComponent},
+  {path: 'login-details', component: LoginDetailsComponent},
+  {path: '', loadChildren: () => import('./public/public.module').then((m)=>m.PublicModule),canActivate:[authGuard]},
+  {path: 'admin', loadChildren: () => import('./admin/admin.module').then((m)=>m.AdminModule)}
 ];
 
 

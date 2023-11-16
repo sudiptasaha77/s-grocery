@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ShoppingCartService } from '../../../service/shopping-cart.service';
+import { ShoppingCartService } from '../../../../service/shopping-cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
