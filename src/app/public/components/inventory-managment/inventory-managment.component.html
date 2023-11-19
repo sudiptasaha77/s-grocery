@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>Inventroy List</h1>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>type</th>
+                    <th>description</th>
+                    <th>Currency Code</th>
+                    <th>price</th>
+                    <th>quantity</th>
+                  </tr>
+                </thead>
+                <tbody  *ngFor="let item of actualShoppingList">
+                  <tr>
+                    <td>{{item.id+1}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.type}}</td>
+                    <td>{{item.description}}</td>
+                    <td>{{item.currencyCode}}</td>
+                    <td>{{item.price}}</td>
+                    <td>{{item.quantity}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </div>
+  </div>
+
+ 

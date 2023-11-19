@@ -1,15 +1,16 @@
-<div class="container">
+<div class="user-detail-container container">
     <div class="row">
         <div class="col">
             <h2>Login</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col">
-            <img width="120" height="140" alt="Shopping Grocery" src="../assets/U.png" />
-        </div>
-        <div class="col">
+        <div class="col user-image" *ngIf="userRoleIdentificationAdmin">
             <img width="120" height="140" alt="Shopping Grocery" src="../assets/A.png" />
+        </div>
+        <div class="col user-image" *ngIf="userRoleIdentificationUser"> 
+            
+            <img width="120" height="140" alt="Shopping Grocery" src="../assets/U.png"/>
         </div>
     </div>
     <div class="row">
@@ -20,7 +21,7 @@
         </div>
         <div class="col">
             <span>
-                <input type="text" />
+                {{userName}}
             </span>
         </div>
     </div>
@@ -32,7 +33,7 @@
         </div>
         <div class="col">
             <span>
-                <input type="text" />
+                {{userPassword}}
             </span>
         </div>
     </div>
@@ -44,7 +45,7 @@
         </div>
         <div class="col">
             <span>
-                
+                {{userRole}}
             </span>
         </div>
     </div>

@@ -1,23 +1,48 @@
 <div class="toolbar" role="banner" routerLink="home">
-    <img
-      width="80"
-      height="90"
-      alt="Shopping Grocery"
-      src="../../assets/shoppingLogo.png"
-    />
-    
-    <span class="logoStyle">Sandy's Cart</span>
-  </div>
-  <div>
-    <app-cart routerLink="checkout"></app-cart>
-  </div>
-  <div>
-    <ul>
-      <li routerLinkActive="active"><a routerLink="home">Home</a></li>
-      <li  routerLinkActive="active"><a routerLink="eachTileDetails">Details</a></li>
-    </ul>
-  </div>
-  
-  <div class="content" role="main">
-    <router-outlet></router-outlet>
-  </div>
+  <img width="80" height="90" alt="Shopping Grocery" src="../../assets/shoppingLogo.png" />
+
+  <span class="logoStyle">Sandy's Cart</span>
+</div>
+<div class="cart-button-positions">
+  <app-cart routerLink="checkout"></app-cart>
+
+  <span>
+    <button type="button" (click)="reset()" class="reset-style" title="Reset">
+      <img width="24px" alt="cart" src="../assets/resetBtn.png" />
+    </button>
+  </span>
+  <span>
+    <span class="col user-image" *ngIf="userRoleIdentificationAdmin">
+      <button (click)="userDetails()" class="user-icon">
+        <img width="20" height="30" alt="Shopping Grocery" src="../../assets/A.png" />
+      </button>
+
+    </span>
+    <span class="col user-image" *ngIf="userRoleIdentificationUser">
+      <button (click)="userDetails()" class="user-icon">
+        <img width="20" height="30" alt="Shopping Grocery" src="../../assets/U.png" />
+      </button>
+
+    </span>
+  </span>
+  <span>
+    <button type="button" (click)="logout()" title="Logout" class="logout-style">
+      <img width="24px" alt="cart" src="../assets/logout.png" />
+    </button>
+  </span>
+</div>
+<div>
+  <ul>
+    <li routerLinkActive="active"><a routerLink="home">Home</a></li>
+    <li routerLinkActive="active">
+      <a routerLink="eachTileDetails">Details</a>
+    </li>
+    <li routerLinkActive="active" *ngIf="userRoleIdentificationAdmin">
+      <a routerLink="inventoryManagment">Inventory Management</a>
+    </li>
+  </ul>
+</div>
+
+<div class="content" role="main">
+  <router-outlet></router-outlet>
+</div>

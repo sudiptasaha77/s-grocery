@@ -23,6 +23,16 @@ export class AuthService {
     username: 'user1',
     password: 'c',
     role: 'user'
+  }, {
+    id: 4,
+    username: 'a',
+    password: 'a',
+    role: 'admin'
+  }, {
+    id: 5,
+    username: 'q',
+    password: 'q',
+    role: 'user'
   }];
 
   session: any;

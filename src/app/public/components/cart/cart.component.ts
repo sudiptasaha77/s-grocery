@@ -10,6 +10,7 @@ import { ShoppingCartService } from 'src/service/shopping-cart.service';
   styleUrls: ['./cart.component.scss'],
 })
 export class CartComponent implements OnInit {
+
   totalNumberOfItem: any;
   initialList: any;
   actualCheckoutList: any;
@@ -30,16 +31,4 @@ export class CartComponent implements OnInit {
   cartCheckout(){
     console.log("this is the cart btn")
   }
-
-  reset(){
-   localStorage.removeItem('checkoutList');
-   localStorage.removeItem('totalNumberOfItem')
-   window.location.reload();
-   this.router.navigate(['/home']);
-   
-  }
-  logout(){
-    this.authService.logout();
-  }
-
 }

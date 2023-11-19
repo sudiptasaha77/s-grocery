@@ -9,6 +9,8 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { TileComponent } from './components/tile/tile.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+import { InventoryManagmentComponent } from './components/inventory-managment/inventory-managment.component';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     ErrorPageComponent,
     CartComponent,
     CheckoutComponent,
+    UserDetailsComponent,
+    InventoryManagmentComponent,
   ],
   exports:[
     HomeComponent,
