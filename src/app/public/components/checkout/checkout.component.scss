@@ -4,3 +4,24 @@
     padding: 10px;
     border-radius: 22px;
 }
+
+.discount-block{
+    display: flex;
+}
+
+.discount-block-style{
+    display: contents;
+
+}
+
+.discount-button{
+    margin-left: 14px;
+}
+
+.discount-msg-style{
+    color: red;
+    position: relative;
+    top: -6px;
+    left: 84px;
+    font-weight: 700;
+}

@@ -20,10 +20,16 @@
           <p>Total: {{ item.price *  item.quantity | currency: 'USD' : 'symbol' }}</p>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-           <p>Discount: <input type="text" [(ngModel)]= "discountValue" (change)="appliedDiscount()"></p>
+    <div class="row discount-block-style">
+        <div class="col discount-block" >
+           <p>Discount: <input type="text" [(ngModel)]= "discountValue" [pattern]="discountPatter" #discountError="ngModel"></p>
+           <span class="discount-button">
+            <button (click)="appliedDiscount()" class="btn btn-info"> Apply Discount</button>
+           </span>
         </div>
+        <div *ngIf="discountError.errors?.['pattern']" class="discount-msg-style"> 
+            User name not valid.
+         </div> 
     </div>
     <div class="row">
         <div class="col">
@@ -37,7 +43,7 @@
     </div>
     <div class="row">
         <div class="col">
-           <p>Total: {{totalSum - discountValue | number: '1.0-2' |  currency: 'USD' : 'symbol' }}</p>
+           <p>Total: {{totalSum - newTotal | number: '1.0-2' |  currency: 'USD' : 'symbol' }}</p>
         </div>
     </div>
     <div class="row">

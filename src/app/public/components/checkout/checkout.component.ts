@@ -4,23 +4,23 @@ import { ShoppingCartService } from 'src/service/shopping-cart.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss']
+  styleUrls: ['./checkout.component.scss'],
 })
-export class CheckoutComponent implements OnInit{
+export class CheckoutComponent implements OnInit {
   initialListmultipleValues: any;
-  initialListmultipleParsedValues : any;
+  initialListmultipleParsedValues: any;
   initialListSingleValue: any;
-  initialListSingleParsedValue:any;
+  initialListSingleParsedValue: any;
   actualCheckoutList: any;
   quantity: any = {};
   totalValue: any;
-  discountValue: number=0;
+  discountValue: any;
   totalSum = 0;
-  errorDiscount : boolean = false;
+  newTotal = 0;
+  errorDiscount: boolean = false;
   successDiscount: boolean = false;
-  constructor(private shoppingCartService: ShoppingCartService){
-
-  }
+  discountPatter = '^[A-Z0-9]{6}$';
+  constructor(private shoppingCartService: ShoppingCartService) {}
 
   ngOnInit(): void {
     this.initialListSingleValue = localStorage.getItem('checkoutList');
@@ -28,64 +28,103 @@ export class CheckoutComponent implements OnInit{
     this.quantityChangeCheck(this.actualCheckoutList);
   }
 
-
-  selectedItemAddToCart(){
-    console.log("selectedItemAddToCart ==============>")
+  selectedItemAddToCart() {
+    console.log('selectedItemAddToCart ==============>');
   }
 
-  finalCheckout(){
-    console.log("finalCheckout=================>")
+  finalCheckout() {
+    console.log('finalCheckout=================>');
   }
 
-  removeItem(id:number){
-    let priceOfItem = this.actualCheckoutList.find((ele: any)=>{
-      if(ele.id === id){
+  removeItem(id: number) {
+    let priceOfItem = this.actualCheckoutList.find((ele: any) => {
+      if (ele.id === id) {
         return ele;
       }
     });
-     let priceOfItemQuantity = priceOfItem.quantity;
+    let priceOfItemQuantity = priceOfItem.quantity;
 
-    this.actualCheckoutList = this.actualCheckoutList.filter((ele: any) => ele.id !== id);
+    this.actualCheckoutList = this.actualCheckoutList.filter(
+      (ele: any) => ele.id !== id
+    );
     let newAtualCheckoutList = JSON.stringify(this.actualCheckoutList);
     localStorage.setItem('checkoutList', newAtualCheckoutList);
-    this.shoppingCartService.setTotalNumberOfItems( this.actualCheckoutList?.length);
-     this.totalSum = this.totalSum - (priceOfItem.price * priceOfItemQuantity);
+    this.shoppingCartService.setTotalNumberOfItems(
+      this.actualCheckoutList?.length
+    );
+    this.totalSum = this.totalSum - priceOfItem.price * priceOfItemQuantity;
   }
 
-  quantityChangeCheck(list: any){
-    
-    if(list.length == 0){
+  quantityChangeCheck(list: any) {
+    if (list.length == 0) {
       this.totalSum = 0;
-
-    }else{
+    } else {
       this.totalSum = 0;
-      for(let i = 0; i < list?.length; i++ ){
-      this.totalValue = list[i].price * list[i].quantity;
-      this.totalSum = this.totalSum + this.totalValue;
+      for (let i = 0; i < list?.length; i++) {
+        this.totalValue = list[i].price * list[i].quantity;
+        this.totalSum = this.totalSum + this.totalValue;
       }
     }
   }
 
-
-  quantityChange(id: any){
-    if(this.actualCheckoutList.length == 0){
+  quantityChange(id: any) {
+    if (this.actualCheckoutList.length == 0) {
       this.totalSum = 0;
-    }else{
+    } else {
       this.totalSum = 0;
-      for(let i = 0; i < this.actualCheckoutList.length; i++ ){
-      this.totalValue = this.actualCheckoutList[i].price * this.actualCheckoutList[i].quantity;
-      this.totalSum = this.totalSum + this.totalValue;
+      for (let i = 0; i < this.actualCheckoutList.length; i++) {
+        this.totalValue =
+          this.actualCheckoutList[i].price *
+          this.actualCheckoutList[i].quantity;
+        this.totalSum = this.totalSum + this.totalValue;
       }
     }
   }
 
-  appliedDiscount(){
-    if(this.discountValue === 0){
+  appliedDiscount() {
+    console.log('this is the value 11111111111111111111', this.discountValue);
+    this.newTotal = this.totalSum;
+    if (this.discountValue === '') {
       this.successDiscount = false;
       this.errorDiscount = false;
-    }else{
+      this.newTotal = 0;
+    } else if (this.discountValue === 'ILSG50') {
       this.successDiscount = true;
+      this.errorDiscount = false;
+      this.newTotal = this.totalSum / 2;
+    } else if (this.discountValue === 'BOGO50') {
+      this.successDiscount = true;
+      this.errorDiscount = false;
+      let newQuantity = 0;
+      let newQuantityDiscountPriceOfEvenItems = 0;
+      let newQuantityDiscountPriceOfOddItems = 0;
+      let newQuantityDiscountPriceOfEvenItemsSum = 0;
+      let newQuantityDiscountPriceOfOddItemsSum = 0;
+      for (let i = 0; i < this.actualCheckoutList?.length; i++) {
+        if (this.actualCheckoutList[i].quantity % 2 == 0) {
+          newQuantity = this.actualCheckoutList[i].quantity / 2;
+          newQuantityDiscountPriceOfEvenItems =
+            (this.actualCheckoutList[i].price * newQuantity) / 2;
+          newQuantityDiscountPriceOfEvenItemsSum =
+            newQuantityDiscountPriceOfEvenItemsSum +
+            newQuantityDiscountPriceOfEvenItems;
+        } else {
+          newQuantity = Math.floor(this.actualCheckoutList[i].quantity / 2);
+          newQuantityDiscountPriceOfOddItems =
+            this.actualCheckoutList[i].price * newQuantity;
+          newQuantityDiscountPriceOfOddItemsSum =
+            newQuantityDiscountPriceOfOddItemsSum +
+            newQuantityDiscountPriceOfOddItems;
+        }
+      }
+
+      this.newTotal =
+        newQuantityDiscountPriceOfEvenItemsSum +
+        newQuantityDiscountPriceOfOddItemsSum;
+    } else {
+      this.successDiscount = false;
+      this.errorDiscount = true;
+      this.newTotal = 0;
     }
   }
-
 }
