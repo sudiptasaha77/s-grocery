@@ -51,6 +51,10 @@ export class PublicComponent {
     this.shoppingCartService.setTotalNumberOfItems(
       this.newCheckoutList?.length
     );
+    // this.shoppingCartService.setNewCheckoutList(
+    //   this.newCheckoutList
+    // );
+  
     this.router.navigate(['/home']);
   }
 

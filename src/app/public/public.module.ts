@@ -11,6 +11,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { InventoryManagmentComponent } from './components/inventory-managment/inventory-managment.component';
+import { CheckoutSidePannelComponent } from './components/checkout-side-pannel/checkout-side-pannel.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { InventoryManagmentComponent } from './components/inventory-managment/in
     CheckoutComponent,
     UserDetailsComponent,
     InventoryManagmentComponent,
+    CheckoutSidePannelComponent,
   ],
   exports:[
     HomeComponent,

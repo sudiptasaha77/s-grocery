@@ -39,7 +39,6 @@ export class TileDetailsComponent implements OnInit {
   selectedItemAddToCart() {
     this.initialListSingleValue = localStorage.getItem('checkoutList');
     this.initialListSingleParsedValue = this.initialListSingleValue == null || this.initialListSingleValue == undefined ? [] : JSON.parse(this.initialListSingleValue);
-    
     if(this.initialListSingleParsedValue.length == 0){
       this.selectedItemValue.quantity = this.quantitySingleItem;
     }else{
@@ -48,9 +47,12 @@ export class TileDetailsComponent implements OnInit {
           return ele;
         }
       });
-      this.selectedItemValue.quantity = this.quantitySingleItem + this.existingItem.quantity;
+      if(this.existingItem === undefined || this.existingItem === null){
+        this.selectedItemValue.quantity = this.quantitySingleItem;
+      }else{
+        this.selectedItemValue.quantity = this.quantitySingleItem + this.existingItem.quantity;
+      }
     }
-
     this.newInitialListSingleParsedValue = this.initialListSingleParsedValue.filter((ele: any) => ele.id !== this.selectedItemValue.id);
 
     this.newInitialListSingleParsedValue.push(this.selectedItemValue);
@@ -59,7 +61,9 @@ export class TileDetailsComponent implements OnInit {
     localStorage.setItem('checkoutList', this.actualCheckoutList);
 
     this.shoppingCartService.setTotalNumberOfItems(this.newInitialListSingleParsedValue?.length)
-    //this.router.navigate(['/checkout']);
+    // this.shoppingCartService.setNewCheckoutList(
+    //   this.newInitialListSingleParsedValue
+    // );
 
   }
 

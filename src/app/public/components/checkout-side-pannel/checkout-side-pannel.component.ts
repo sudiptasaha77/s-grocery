@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ShoppingCartService } from 'src/service/shopping-cart.service';
-
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss'],
+  selector: 'app-checkout-side-pannel',
+  templateUrl: './checkout-side-pannel.component.html',
+  styleUrls: ['./checkout-side-pannel.component.scss']
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutSidePannelComponent implements OnInit, OnChanges  {
+  @Input() newItemList : any;
   initialListmultipleValues: any;
   initialListmultipleParsedValues: any;
   initialListSingleValue: any;
@@ -20,20 +21,30 @@ export class CheckoutComponent implements OnInit {
   errorDiscount: boolean = false;
   successDiscount: boolean = false;
   discountPatter = '^[A-Z0-9]{6}$';
-  constructor(private shoppingCartService: ShoppingCartService) {}
+  constructor(private shoppingCartService: ShoppingCartService, private router: Router ) {}
 
   ngOnInit(): void {
     this.initialListSingleValue = localStorage.getItem('checkoutList');
+
+    // let list: any;
+    // this.shoppingCartService.getNewCheckoutList().subscribe((data: any)=>{
+    //   list = data;
+    // });
+   
     this.actualCheckoutList = JSON.parse(this.initialListSingleValue);
     this.quantityChangeCheck(this.actualCheckoutList);
   }
+  
+  ngOnChanges() {
+    console.log("this is the list checkout-side-pannel 1111111111111111", this.newItemList);
+    }  
 
   selectedItemAddToCart() {
     console.log('selectedItemAddToCart ==============>');
   }
 
   finalCheckout() {
-    console.log('finalCheckout=================>');
+    this.router.navigateByUrl('/checkout');
   }
 
   removeItem(id: number) {

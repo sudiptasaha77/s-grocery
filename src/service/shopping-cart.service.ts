@@ -168,6 +168,9 @@ export class ShoppingCartService {
   private _totalNumberOfItems = new BehaviorSubject<any>('');
   totalNumberOfItems = this._totalNumberOfItems.asObservable();
 
+  private _newCheckoutListItems = new BehaviorSubject<any>('');
+  newCheckoutListItems = this._newCheckoutListItems.asObservable();
+
   constructor() { }
 
   getShoppingCartList(){
@@ -175,11 +178,19 @@ export class ShoppingCartService {
   }
 
   getTotalNumberOfItems(): Observable<any>{
-    return this.totalNumberOfItems
+    return this.totalNumberOfItems;
   }
 
   setTotalNumberOfItems(value: any){
     this._totalNumberOfItems.next(value);
+  }
+
+  getNewCheckoutList(){
+    return this.newCheckoutListItems;
+  }
+
+  setNewCheckoutList(value: any){
+    this._newCheckoutListItems.next(value);
   }
 
 

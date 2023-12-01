@@ -1,6 +1,5 @@
 <div class="container">
     <div class="row">
-      <div class="col-lg">
         <div class="eachItemDisplay">
             <img src= "{{selectedItemValue.imageUrl}}" alt="{{selectedItemValue.title}}" class="tile-image-style">
             <h1>{{selectedItemValue.title}}</h1>
@@ -9,10 +8,12 @@
             <p>Price: {{selectedItemValue.price | currency: 'USD' : 'symbol' }}</p>
             <p><input type="number" id="quantitySingleItem" name="quantitySingleItem" min="1" max="100" [(ngModel)] = "quantitySingleItem" (change)="quantityChangeFun()"></p>
             <p><button class="btn btn-dark" (click)= "selectedItemAddToCart()" *ngIf="quantityCheck">Add to cart</button></p>
-        
         </div>
-        
-      </div>
+      <aside>
+        <!-- <div>
+          <app-checkout-side-pannel [newItemList]="newInitialListSingleParsedValue"></app-checkout-side-pannel>
+        </div> -->
+      </aside>
     </div>
   </div>
 
