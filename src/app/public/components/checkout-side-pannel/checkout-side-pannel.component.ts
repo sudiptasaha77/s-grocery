@@ -37,6 +37,7 @@ export class CheckoutSidePannelComponent implements OnInit, OnChanges  {
   
   ngOnChanges() {
     console.log("this is the list checkout-side-pannel 1111111111111111", this.newItemList);
+    this.actualCheckoutList = this.newItemList
     }  
 
   selectedItemAddToCart() {
