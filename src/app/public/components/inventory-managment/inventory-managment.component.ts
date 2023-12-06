@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/service/auth.service';
 import { ShoppingCartService } from 'src/service/shopping-cart.service';
 import {ShoppingCart} from '../../../../model/shopping-cart.model';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { AddItemInventoryComponent } from '../add-item-inventory/add-item-inventory.component'
+ 
 
 @Component({
   selector: 'app-inventory-managment',
@@ -14,10 +17,11 @@ export class InventoryManagmentComponent implements OnInit {
   totalNumberOfItem: any;
   initialList: any;
   actualCheckoutList: any;
-  actualShoppingList: ShoppingCart[] = []
+  actualShoppingList: ShoppingCart[] = [];
+  modalRef?: BsModalRef;
   
 
-  constructor(private router: Router, private shoppingCartService: ShoppingCartService, private authService:AuthService){
+  constructor(private router: Router, private shoppingCartService: ShoppingCartService, private authService:AuthService, private modalService: BsModalService){
 
   }
 
@@ -29,4 +33,9 @@ export class InventoryManagmentComponent implements OnInit {
   cartCheckout(){
     console.log("this is the cart btn")
   }
+  
+  openAddItem(){
+    this.modalRef = this.modalService.show(AddItemInventoryComponent);
+  }
+
 }

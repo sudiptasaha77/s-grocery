@@ -12,7 +12,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { InventoryManagmentComponent } from './components/inventory-managment/inventory-managment.component';
 import { CheckoutSidePannelComponent } from './components/checkout-side-pannel/checkout-side-pannel.component';
-
+import { AddItemInventoryComponent } from './components/add-item-inventory/add-item-inventory.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { CheckoutSidePannelComponent } from './components/checkout-side-pannel/c
     UserDetailsComponent,
     InventoryManagmentComponent,
     CheckoutSidePannelComponent,
+    AddItemInventoryComponent,
   ],
   exports:[
     HomeComponent,
@@ -38,7 +40,8 @@ import { CheckoutSidePannelComponent } from './components/checkout-side-pannel/c
   imports: [
     CommonModule,
     PublicRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PublicModule { }

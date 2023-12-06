@@ -1,0 +1,71 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Add Item</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="close()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+</div>
+<div>
+    <form [formGroup]="addItemForm" (ngSubmit)="submitAddItem()">
+        <div class="modal-body">
+    
+    
+            <div class="container">
+                <div class="row form-group mb-2">
+                    <div class="col-sm">
+                        Name
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" formControlName="itemName" class="form-control" />
+                    </div>
+                </div>
+                
+                <div class="row form-group mb-2">
+                    <div class="col-sm">
+                        Type
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" formControlName="itemType" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group mb-2">
+                    <div class="col-sm">
+                        Description
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" formControlName="itemDescription" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group mb-2">
+                    <div class="col-sm">
+                        Price
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" formControlName="itemPrice" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group mb-2">
+                    <div class="col-sm">
+                        Quantity
+                    </div>
+                    <div class="col-sm">
+                        <input type="text" formControlName="itemQuantity" class="form-control" />
+                    </div>
+                </div>
+                <div class="row form-group mb-2">
+                    <div class="col-sm">
+                        Image
+                    </div>
+                    <div class="col-sm">
+                        <input type="file" (change)="uploadImage($event)" />
+                    </div>
+                </div>
+            </div>
+    
+    
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
+            <button class="btn btn-primary mr-1" [disabled]="!addItemForm.valid">Save</button>
+        </div>
+    </form>
+</div>

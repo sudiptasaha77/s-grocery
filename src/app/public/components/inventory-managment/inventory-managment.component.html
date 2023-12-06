@@ -2,6 +2,9 @@
     <div class="row">
       <div class="col">
         <h1>Inventroy List</h1>
+        <span>
+          <button type="button" class="btn btn-primary" (click)="openAddItem()">OpenChild</button>
+        </span>
       </div>
     </div>
     <div class="row">
@@ -10,10 +13,10 @@
                 <thead>
                   <tr>
                     <th>Id</th>
+                    <th>Image</th>
                     <th>Title</th>
                     <th>type</th>
                     <th>description</th>
-                    <th>Currency Code</th>
                     <th>price</th>
                     <th>quantity</th>
                   </tr>
@@ -21,11 +24,11 @@
                 <tbody  *ngFor="let item of actualShoppingList">
                   <tr>
                     <td>{{item.id+1}}</td>
+                    <td><img class="card-img-top" width="100px" src="{{item.imageUrl}}" alt="{{item.imageUrl}}"></td>
                     <td>{{item.title}}</td>
                     <td>{{item.type}}</td>
                     <td>{{item.description}}</td>
-                    <td>{{item.currencyCode}}</td>
-                    <td>{{item.price}}</td>
+                    <td>${{item.price}}</td>
                     <td>{{item.quantity}}</td>
                   </tr>
                 </tbody>
@@ -34,4 +37,4 @@
       </div>
   </div>
 
- 
+

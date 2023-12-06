@@ -1,9 +1,9 @@
 
 <div class="results">
     <div class="card" style="width: 18rem;" *ngFor="let item of actualShoppingList">
-        <img class="card-img-top" src="{{item.imageUrl}}" alt="{{item.imageUrl}}">
+        <img class="card-img-top" width="200px" src="{{item.imageUrl}}" alt="{{item.imageUrl}}">
         <div class="card-body">
-          <h5 class="card-title">{{item.title}}</h5>
+          <h5 class="card-title" style="font-size: 17px;">{{item.title}}</h5>
           <p class="card-text">Price: {{item.price | currency: 'USD' : 'symbol' }}</p>
           <p>
             <span>
