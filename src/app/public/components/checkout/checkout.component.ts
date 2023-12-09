@@ -52,9 +52,7 @@ export class CheckoutComponent implements OnInit {
     this.shoppingCartService.setTotalNumberOfItems(
       this.actualCheckoutList?.length
     );
-    // this.shoppingCartService.setNewCheckoutList(
-    //   this.actualCheckoutList
-    // );
+    
     this.totalSum = this.totalSum - priceOfItem.price * priceOfItemQuantity;
   }
 

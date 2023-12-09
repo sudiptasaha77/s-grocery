@@ -26,16 +26,16 @@
            </span>
         </div>
         <div *ngIf="discountError.errors?.['pattern']" class="discount-msg-style"> 
-            User name not valid.
+            Invalid promo code.
          </div> 
     </div>
     <div class="row ">
         <div class="col">
             <div class="alert alert-success" role="alert" *ngIf="successDiscount">
-                This is a success alert—check it out!
+                Promocode successfull.
             </div>
             <div class="alert alert-danger" role="alert" *ngIf="errorDiscount">
-                This is a danger alert—check it out!
+                Invalid promo code.
             </div>
         </div>
     </div>

@@ -1,9 +1,9 @@
-import { Component, OnInit , TemplateRef } from '@angular/core';
+import { Component, EventEmitter, OnInit , TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/service/auth.service';
 import { ShoppingCartService } from 'src/service/shopping-cart.service';
 import {ShoppingCart} from '../../../../model/shopping-cart.model';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalService, BsModalRef} from 'ngx-bootstrap/modal';
 import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 
 @Component({
@@ -24,6 +24,7 @@ export class AddItemInventoryComponent implements OnInit{
 
 addItemToInventory: any= new Object;
 uploadImageValue = null;
+public addItemToInventoryEvent: EventEmitter<any> = new EventEmitter();
 
   constructor(private router: Router, private shoppingCartService: ShoppingCartService, private authService:AuthService, private modalService: BsModalService,  private formBuilder: FormBuilder){
 
@@ -50,5 +51,13 @@ uploadImageValue = null;
     this.addItemToInventory['uploadImageValue'] =  this.uploadImageValue;
 
     console.log("this is the value of the submit addItemToInventory1111111111111", this.addItemToInventory);
+    this.shoppingCartService.setTotalNumberOfItems(this.addItemToInventory);
+    //this.addItemToInventoryEvent.emit(this.addItemToInventory);
+    this.triggerEvent();
+    this.modalService.hide();
+  }
+
+  triggerEvent() {
+    this.addItemToInventoryEvent.emit(this.addItemToInventory);
   }
 }

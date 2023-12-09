@@ -168,8 +168,8 @@ export class ShoppingCartService {
   private _totalNumberOfItems = new BehaviorSubject<any>('');
   totalNumberOfItems = this._totalNumberOfItems.asObservable();
 
-  private _newCheckoutListItems = new BehaviorSubject<any>('');
-  newCheckoutListItems = this._newCheckoutListItems.asObservable();
+  private _checkoutPageUrl = new BehaviorSubject<any>('');
+  checkoutPageUrl = this._checkoutPageUrl.asObservable();
 
   constructor() { }
 
@@ -185,12 +185,12 @@ export class ShoppingCartService {
     this._totalNumberOfItems.next(value);
   }
 
-  getNewCheckoutList(){
-    return this.newCheckoutListItems;
+  getCheckoutPageUrl(): Observable<any>{
+    return this.checkoutPageUrl;
   }
 
-  setNewCheckoutList(value: any){
-    this._newCheckoutListItems.next(value);
+  setCheckoutPageUrl(value: any){
+    this._checkoutPageUrl.next(value);
   }
 
 

@@ -64,9 +64,6 @@ export class TileComponent implements OnInit{
     this.newInitialListMultiParsedValue.push(this.selectedItemDetail);
     this.actualCheckoutList = JSON.stringify(this.newInitialListMultiParsedValue);
     localStorage.setItem('checkoutList', this.actualCheckoutList);
-    // this.shoppingCartService.setNewCheckoutList(
-    //   this.newInitialListMultiParsedValue
-    // );
     this.shoppingCartService.setTotalNumberOfItems(this.newInitialListMultiParsedValue?.length)
     
   }

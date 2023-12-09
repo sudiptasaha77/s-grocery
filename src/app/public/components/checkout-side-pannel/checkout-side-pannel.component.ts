@@ -25,18 +25,12 @@ export class CheckoutSidePannelComponent implements OnInit, OnChanges  {
 
   ngOnInit(): void {
     this.initialListSingleValue = localStorage.getItem('checkoutList');
-
-    // let list: any;
-    // this.shoppingCartService.getNewCheckoutList().subscribe((data: any)=>{
-    //   list = data;
-    // });
-   
     this.actualCheckoutList = JSON.parse(this.initialListSingleValue);
     this.quantityChangeCheck(this.actualCheckoutList);
+    
   }
   
   ngOnChanges() {
-    console.log("this is the list checkout-side-pannel 1111111111111111", this.newItemList);
     this.actualCheckoutList = this.newItemList
     }  
 
@@ -64,9 +58,7 @@ export class CheckoutSidePannelComponent implements OnInit, OnChanges  {
     this.shoppingCartService.setTotalNumberOfItems(
       this.actualCheckoutList?.length
     );
-    // this.shoppingCartService.setNewCheckoutList(
-    //   this.actualCheckoutList
-    // );
+    
     this.totalSum = this.totalSum - priceOfItem.price * priceOfItemQuantity;
   }
 
