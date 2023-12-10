@@ -8,9 +8,8 @@
         <div class="col user-image" *ngIf="userRoleIdentificationAdmin">
             <img width="120" height="140" alt="Shopping Grocery" src="../assets/A.png" />
         </div>
-        <div class="col user-image" *ngIf="userRoleIdentificationUser"> 
-            
-            <img width="120" height="140" alt="Shopping Grocery" src="../assets/U.png"/>
+        <div class="col user-image user-id" *ngIf="userRoleIdentificationUser"> 
+            {{userInitialLetter | uppercase}}
         </div>
     </div>
     <div class="row">
@@ -47,11 +46,6 @@
             <span>
                 {{userRole}}
             </span>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <button>Sign-in</button>
         </div>
     </div>
 </div>

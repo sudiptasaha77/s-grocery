@@ -12,6 +12,7 @@ export class UserDetailsComponent implements OnInit {
   userRole: any;
   userRoleIdentificationAdmin: any;
   userRoleIdentificationUser: any;
+  userInitialLetter: string = ''
   constructor() {}
   ngOnInit() {
     this.userDetails = localStorage.getItem('session');
@@ -22,6 +23,12 @@ export class UserDetailsComponent implements OnInit {
       this.userRoleIdentificationAdmin = true;
     } else {
       this.userRoleIdentificationUser = true;
+    }
+    let userData = JSON.parse(this.userDetails);
+    if(userData.role == "user"){
+      this.userInitialLetter = userData.username.charAt(0);
+    }else{
+      this.userInitialLetter = '';
     }
   }
 }

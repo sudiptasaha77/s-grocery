@@ -17,6 +17,7 @@ export class PublicComponent implements OnInit{
   userRoleIdentificationUser: any;
   detailsPage: boolean = true;
   detailsPageData: string='';
+  userInitialLetter: string = ''
 
 
   constructor(
@@ -41,6 +42,12 @@ export class PublicComponent implements OnInit{
     } else {
       this.userRoleIdentificationUser = true;
     }
+    let userData = JSON.parse(this.userDetail);
+    if(userData.role == "user"){
+      this.userInitialLetter = userData.username.charAt(0);
+    }else{
+      this.userInitialLetter = '';
+    }
   }
 
 
@@ -55,7 +62,9 @@ export class PublicComponent implements OnInit{
   }
 
   userDetails() {
-    console.log('this is the user details');
+    
+   
+    
     this.router.navigate(['/userDetails']);
 
   }
