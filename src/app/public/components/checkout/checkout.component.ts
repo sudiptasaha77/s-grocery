@@ -20,7 +20,7 @@ export class CheckoutComponent implements OnInit {
   errorDiscount: boolean = false;
   successDiscount: boolean = false;
   discountPatter = '^[A-Z0-9]{6}$';
-  constructor(private shoppingCartService: ShoppingCartService) {}
+  constructor(private shoppingCartService: ShoppingCartService) { }
 
   ngOnInit(): void {
     this.initialListSingleValue = localStorage.getItem('checkoutList');
@@ -52,12 +52,12 @@ export class CheckoutComponent implements OnInit {
     this.shoppingCartService.setTotalNumberOfItems(
       this.actualCheckoutList?.length
     );
-    
+
     this.totalSum = this.totalSum - priceOfItem.price * priceOfItemQuantity;
   }
 
   quantityChangeCheck(list: any) {
-    if (list.length == 0) {
+    if (list?.length == 0) {
       this.totalSum = 0;
     } else {
       this.totalSum = 0;
@@ -79,6 +79,11 @@ export class CheckoutComponent implements OnInit {
           this.actualCheckoutList[i].quantity;
         this.totalSum = this.totalSum + this.totalValue;
       }
+      let newAtualCheckoutList = JSON.stringify(this.actualCheckoutList);
+      localStorage.setItem('checkoutList', newAtualCheckoutList);
+      this.shoppingCartService.setTotalNumberOfItems(
+        this.actualCheckoutList?.length
+      );
     }
   }
 

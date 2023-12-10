@@ -25,7 +25,7 @@ export class TileDetailsComponent implements OnInit {
   constructor(private shoppingCartService: ShoppingCartService, private route: ActivatedRoute ,  private router: Router) { }
 
   ngOnInit(): void {
-    console.log("this is the value11111111111", this.selectedItemValue)
+    console.log("this is the TileDetailsComponent@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", this.selectedItemValue)
     this.route.queryParams.subscribe((params: any) => {
       this.selectedItemId = Number(params.id);
       this.selectedItem = this.shoppingCartService.getShoppingCartList().find(
@@ -34,6 +34,7 @@ export class TileDetailsComponent implements OnInit {
     }
     );
     this.selectedItemValue = this.selectedItem;
+    console.log("this is the TileDetailsComponent@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", this.selectedItemValue)
   }
 
   selectedItemAddToCart() {

@@ -45,6 +45,12 @@ export class PublicComponent implements OnInit{
 
 
   logout() {
+    localStorage.removeItem('checkoutList');
+    localStorage.removeItem('totalNumberOfItem');
+    this.newCheckoutList = localStorage.getItem('checkoutList');
+    this.shoppingCartService.setTotalNumberOfItems(
+      this.newCheckoutList?.length
+    );
     this.authService.logout();
   }
 
