@@ -13,7 +13,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddItemInventoryComponent implements OnInit {
 
+  public addItemToInventoryEvent: EventEmitter<any> = new EventEmitter();
   modalRef?: BsModalRef;
+  addItemToInventory: any = new Object;
+  uploadImageValue = null;
+  submitted = false;
+
+
   addItemForm = this.formBuilder.group({
     itemName: ['', [Validators.required]],
     itemType: ['', [Validators.required]],
@@ -22,9 +28,7 @@ export class AddItemInventoryComponent implements OnInit {
     itemQuantity: ['', [Validators.required, Validators.pattern('^[0-9]*$')]]
   });
 
-  addItemToInventory: any = new Object;
-  uploadImageValue = null;
-  public addItemToInventoryEvent: EventEmitter<any> = new EventEmitter();
+  
 
   constructor(private router: Router, private shoppingCartService: ShoppingCartService, private authService: AuthService, private modalService: BsModalService, private formBuilder: FormBuilder) {
   }
@@ -32,6 +36,8 @@ export class AddItemInventoryComponent implements OnInit {
   ngOnInit(): void {
     console.log("this is the AddItemInventoryComponent")
   }
+
+  get f() { return this.addItemForm.controls; }
 
   uploadImage($event: any) {
     this.uploadImageValue = $event.target.files[0];
@@ -44,6 +50,10 @@ export class AddItemInventoryComponent implements OnInit {
 
   submitAddItem() {
 
+    this.submitted = true;
+    if (this.addItemForm.invalid) {
+      return;
+  }
     this.addItemToInventory['itemName'] = this.addItemForm.value.itemName?.trim();
     this.addItemToInventory['itemType'] = this.addItemForm.value.itemType?.trim();
     this.addItemToInventory['itemDescription'] = this.addItemForm.value.itemDescription?.trim();

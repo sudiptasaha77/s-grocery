@@ -15,7 +15,13 @@
                         Name
                     </div>
                     <div class="col-sm">
-                        <input type="text" formControlName="itemName" class="form-control" />
+                        <input type="text" formControlName="itemName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemName.errors }"
+                        required/>
+                        <div *ngIf="submitted && f.itemName.errors" class="invalid-feedback">
+                            <div *ngIf= "f.itemName.errors['required']">
+                              Item name is required.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -24,7 +30,13 @@
                         Type
                     </div>
                     <div class="col-sm">
-                        <input type="text" formControlName="itemType" class="form-control" />
+                        <input type="text" formControlName="itemType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemType.errors }"
+                        required/>
+                        <div *ngIf="submitted && f.itemType.errors" class="invalid-feedback">
+                            <div *ngIf= "f.itemType.errors['required']">
+                              Item type is required.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row form-group mb-2">
@@ -32,7 +44,13 @@
                         Description
                     </div>
                     <div class="col-sm">
-                        <input type="text" formControlName="itemDescription" class="form-control" />
+                        <input type="text" formControlName="itemDescription" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemDescription.errors }"
+                        required/>
+                        <div *ngIf="submitted && f.itemDescription.errors" class="invalid-feedback">
+                            <div *ngIf= "f.itemDescription.errors['required']">
+                              Item description is required.
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row form-group mb-2">
@@ -40,7 +58,16 @@
                         Price
                     </div>
                     <div class="col-sm">
-                        <input type="text" formControlName="itemPrice" class="form-control" />
+                        <input type="text" formControlName="itemPrice" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemPrice.errors }"
+                        required/>
+                        <div *ngIf="submitted && f.itemPrice.errors" class="invalid-feedback">
+                            <div *ngIf= "f.itemPrice.errors['required']">
+                              Item price is required
+                            </div>
+                            <div *ngIf= "f.itemPrice.errors['pattern']">
+                                Please enter only numbers
+                              </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row form-group mb-2">
@@ -48,7 +75,16 @@
                         Quantity
                     </div>
                     <div class="col-sm">
-                        <input type="text" formControlName="itemQuantity" class="form-control" />
+                        <input type="text" formControlName="itemQuantity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.itemQuantity.errors }"
+                        required/>
+                        <div *ngIf="submitted && f.itemQuantity.errors" class="invalid-feedback">
+                            <div *ngIf= "f.itemQuantity.errors['required']">
+                              Item Quantity is required
+                            </div>
+                            <div *ngIf= "f.itemQuantity.errors['pattern']">
+                                Please enter only numbers
+                              </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row form-group mb-2">
@@ -65,7 +101,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" (click)="close()">Cancel</button>
-            <button class="btn btn-primary mr-1" [disabled]="!addItemForm.valid">Save</button>
+            <button class="btn btn-primary mr-1">Save</button>
         </div>
     </form>
 </div>
