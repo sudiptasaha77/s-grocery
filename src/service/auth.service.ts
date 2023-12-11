@@ -6,49 +6,30 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  users : any[] = [
-    {
-      id: 1,
-      username: 'admin1',
-      password: 'b',
-      role: 'admin'
-    },
-    {
-    id: 2,
-    username: 'admin2',
-    password: 'b',
-    role: 'admin'
-  }, {
-    id: 3,
-    username: 'user1',
-    password: 'c',
-    role: 'user'
-  }, {
-    id: 4,
-    username: 'a',
-    password: 'a',
-    role: 'admin'
-  }, {
-    id: 5,
-    username: 'q',
-    password: 'q',
-    role: 'user'
-  }];
-
+  private currentUser: { username: string; password: string; role: string } | null = null;
   session: any;
 
   constructor(private router: Router) { }
 
-  login(userName: string, password: string, role: string){
-    let user = this.users.find(u => u.username === userName && u.password === password && u.role === role)
-    if(user){
-      this.session = user;
+  login(username: string, password: string, role: string): boolean {
+    if (role === 'admin' && username === 'Tirth' && password === 'Great') {
+      this.currentUser = { username, password, role };
+      this.session = this.currentUser;
       localStorage.setItem('session', JSON.stringify(this.session));
-
+      return true;
+    } else if (role === 'user') {
+      this.currentUser = { username, password, role };
+      this.session = this.currentUser;
+      localStorage.setItem('session', JSON.stringify(this.session));
+      return true;
+    } else {
+      return false;
     }
-    return user;
   }
-
+  getCurrentUser(): { username: string; password: string; role: string } | null {
+    return this.currentUser;
+  }
+  
   logout(){
     this.session = undefined;
     localStorage.removeItem('session');
