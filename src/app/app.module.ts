@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { ErrorHandelingService } from '../service/error-handeling.service'
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     BrowserAnimationsModule,
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [{provide: ErrorHandler , useClass: ErrorHandelingService}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

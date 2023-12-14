@@ -22,11 +22,13 @@ export class AuthGuard implements CanActivate {
         return true; // Admin can access the route
       } else if (currentUser.role === 'user') {
         return true; // User can access the route
+      }else{
+        this.router.navigate(['/404']);
+        return false;
       }
+    }else{
+      this.router.navigate(['/login']);
+      return false;
     }
-
-    // If not logged in or unauthorized role, redirect to login page
- //   this.router.navigate(['/login']);
-    return false;
   }
 }
