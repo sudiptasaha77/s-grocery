@@ -35,7 +35,7 @@
   <ul>
     <li routerLinkActive="active"><a routerLink="home">Home</a></li>
     <li routerLinkActive="active">
-      <a routerLink="eachTileDetails" *ngIf="detailsPage">Details</a>
+      <a routerLink="eachTileDetails" *ngIf="detailsPage" (click)="itemDetails()">Details</a>
     </li>
     <li routerLinkActive="active" *ngIf="userRoleIdentificationAdmin">
       <a routerLink="inventoryManagment">Inventory Management</a>

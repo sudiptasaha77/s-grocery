@@ -33,6 +33,7 @@ export class TileComponent implements OnInit{
   selectedItem(id:number){
     console.log("this is the id", id);
     this.router.navigate(['/eachTileDetails', id], { queryParams: { id: id } });  
+    
   }
 
   selectedItemAddToCart(id:number){
