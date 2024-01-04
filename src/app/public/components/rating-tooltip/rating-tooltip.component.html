@@ -1,0 +1,41 @@
+<div class="tooltip"
+     [style.left]="left + 'px'" [style.top]="top + 'px'">
+  <!-- <div class="star-rating">
+    <ng-container *ngFor="let star of Array(fullStars).fill(0); let i = index">
+      <span class="star">&#9733;</span>
+    </ng-container>
+    <span class="fa star">&#xf123;</span>
+  </div> -->
+
+  <div class="star-rating">
+    <span>Rating: </span>
+    <ng-container *ngIf="fullStars == 1">
+        <span class="star">&#9733;</span>
+      </ng-container>
+      <ng-container *ngIf="fullStars == 2">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+      </ng-container>
+      <ng-container *ngIf="fullStars == 3">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+      </ng-container>
+      <ng-container *ngIf="fullStars == 4">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+      </ng-container>
+      <ng-container *ngIf="fullStars == 5">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+      </ng-container>
+    <span *ngIf="halfStar" class="fa star">&#xf123;</span>
+  </div>
+  
+</div>
+

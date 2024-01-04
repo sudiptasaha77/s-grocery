@@ -14,6 +14,8 @@ import { InventoryManagmentComponent } from './components/inventory-managment/in
 import { CheckoutSidePannelComponent } from './components/checkout-side-pannel/checkout-side-pannel.component';
 import { AddItemInventoryComponent } from './components/add-item-inventory/add-item-inventory.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {TooltipModule} from './components/rating-tooltip/tooltip.module';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 @NgModule({
   declarations: [
@@ -39,9 +41,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    TooltipModule,
     PublicRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RatingModule.forRoot(),
   ]
 })
 export class PublicModule { }

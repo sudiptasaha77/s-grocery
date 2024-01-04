@@ -9,15 +9,19 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { ErrorHandelingService } from '../service/error-handeling.service'
+import { ErrorHandelingService } from '../service/error-handeling.service';
+import { ProductPopularityPipe } from './product-popularity.pipe';
+import {TooltipModule} from './public/components/rating-tooltip/tooltip.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ProductPopularityPipe
   ],
   imports: [
+    TooltipModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
